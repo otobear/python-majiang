@@ -60,8 +60,8 @@ class BoardWidget(QWidget):
             starting_labels.append(label)
         center_panel_layout.addWidget(starting_labels[2], 0, 1, Qt.AlignmentFlag.AlignHCenter)
         center_panel_layout.addWidget(starting_labels[3], 1, 0, Qt.AlignmentFlag.AlignHCenter)
-        center_panel_layout.addWidget(starting_labels[0], 1, 2, Qt.AlignmentFlag.AlignHCenter)
-        center_panel_layout.addWidget(starting_labels[1], 2, 1, Qt.AlignmentFlag.AlignHCenter)
+        center_panel_layout.addWidget(starting_labels[1], 1, 2, Qt.AlignmentFlag.AlignHCenter)
+        center_panel_layout.addWidget(starting_labels[0], 2, 1, Qt.AlignmentFlag.AlignHCenter)
         center_panel.setLayout(center_panel_layout)
 
         center_area_layout = QGridLayout()
