@@ -76,7 +76,8 @@ class Board(object):
             if self.pmn_dict['PWind'] not in ['E', 'S', 'W', 'N']:
                 err_msgs.append('PWind is not valid')
 
-            if self.pmn_dict['Scoring'] not in ['Normal', 'Duplicate']:
+            # TODO: remove Duplicate
+            if self.pmn_dict['Scoring'] not in ['MCR', 'Duplicate', 'Duplicate MCR']:
                 err_msgs.append('Scoring is not valid')
 
             try:
@@ -407,7 +408,7 @@ class Board(object):
 
             if action_str == 'T':
                 if self.play_current_idx != 0:
-                    if action_player != (self.get_turn() + 1) % len(SEATS):
+                    if self.get_action() not in [ANGANG, BUGANG, ZHIGANG] and action_player != (self.get_turn() + 1) % len(SEATS):
                         raise ValueError('invalid action string {}'.format(action_str))
 
                 self.game_tile_manager.take(action_player, Tile(action_tile_str))
