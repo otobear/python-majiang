@@ -54,7 +54,7 @@ Example
 ^^^^^^^
 
 ::
-    
+
   [Event "Duplicate MCR"]
   [Site "https://mahjongsoft.com/mcrm_replay.php?session=74621&game=1&table=3"]
   [Date "2022.06.25"]
@@ -69,8 +69,8 @@ Example
   [Starting "0 0 0 0"]
   [Result "-32 36 -8 36"]
   [Penalty "0 0 0 0"]
-  [Play "T0r2D0r1T1b6D1w3P2w3D2w4T3b8D3r3T0d6D0r2T1r1D1r2T2r3D2b9T3d1D3w4T0c3D0w2T1c8D1r1T2b1D2z1T3w2D3z1T0w4D0z1T1d8D1r3T2b3D2b8C3b8D3b3T0w1D0z1T1w1D1z1T2b1D2z1T3b2D3z1T0b7D0b3T1w2D1z1T2r1D2c2T3c5D3z1T0c5D0c3T1d8D1w1T2d1D2c1T3c4D3c8T0c1D0z1T1d7D1z1T2d8D2c1T3d6D3c6C0c6D0b9T1b5D1z1T2c9D2z1T3b6D3z1T0c9D0z1T1w1D1z1T2d4D2d1T3w3D3z1T0c9D0z1T1c6D1z1T2c8D2d8C3d8D3d6C0d5D0d3M1M3"]
-  [Fan "None 39/1.62/1.76/1.77/1 None 39/1.63/1.70/1.77/1"]
+  [Play "T0r2D0r1T1b6D1w3P2w3D2w4T3b8D3r3T0d6D0r2T1r1D1r2T2r3D2b9T3d1D3w4T0c3D0w2T1c8D1r1T2b1D2z1T3w2D3z1T0w4D0z1T1d8D1r3T2b3D2b8C3b8D3b3T0w1D0z1T1w1D1z1T2b1D2z1T3b2D3z1T0b7D0b3T1w2D1z1T2r1D2c2T3c5D3z1T0c5D0c3T1d8D1w1T2d1D2c1T3c4D3c8T0c1D0z1T1d7D1z1T2d8D2c1T3d6D3c6C0c6D0b9T1b5D1z1T2c9D2z1T3b6D3z1T0c9D0z1T1w1D1z1T2d4D2d1T3w3D3z1T0c9D0z1T1c6D1z1T2c8D2d8C3d8D3d6C0d5D0d3H1H3"]
+  [Fan "None 39/8/1.62/2/1.76/1/1.77/1/1 None 39/8/1.63/2/1.70/1/1.77/1/1"]
 
 Game Layout
 ^^^^^^^^^^^
@@ -107,79 +107,81 @@ This value indicates the name of the player at the direction.
 Deal
 """"
 This value indicates the starting tiles of each hand.
-It is defined as "<East hand> <South hand> <West hand> <North hand>"
-Each hand is defined as "c<nums>d<nums>b<nums>w<nums>r<nums>f<nums>" where nums are consecutive digits between 1 and 9.
-The suit is represented by 'c'(Character), 'd'(Dot), 'b'(Bamboo), 'w'(Wind), 'r'(dRagon) and 'f'(Flower). The number is
-given by the following <nums>.
-If the suit is 'c', 'd' or 'b', then all digits in following <nums> must be an integer between 1 and 9.
-If the suit is 'w', then all digits in following <nums> must be an integer between 1 and 4.
-If the suit is 'r', then all digits in following <nums> must be an integer between 1 and 3.
-If the suit is 'f', then all digits in following <nums> must be an integer between 1 and 8.
+It is defined as ``"<East hand> <South hand> <West hand> <North hand>"``
+Each hand is defined as ``c<nums>d<nums>b<nums>w<nums>r<nums>f<nums>`` where nums are consecutive digits between 1 and 9.
+The suit is represented by ``c`` (Character), ``d`` (Dot), ``b`` (Bamboo), ``w`` (Wind), ``r`` (dRagon) and ``f`` (Flower).
+The number is given by the following ``<nums>``.
+If the suit is ``c``, ``d`` or ``b``, then all digits in following ``<nums>`` must be an integer between 1 and 9.
+If the suit is ``w``, then all digits in following ``<nums>`` must be an integer between 1 and 4.
+If the suit is ``r``, then all digits in following ``<nums>`` must be an integer between 1 and 3.
+If the suit is ``f``, then all digits in following ``<nums>`` must be an integer between 1 and 8.
 
 Scoring
 """"
 This value indicates the used scoring method.
 The following can be used:
-  MCR
-  Duplicate MCR
+  - MCR
+  - Duplicate MCR
 
 Starting
 """"""""
 This value indicates the starting score.
-It is defined as "<East score> <South score> <West score> <North score>".
+It is defined as ``"<East score> <South score> <West score> <North score>"``.
 For duplicate MCR game, all score must be 0.
 
 Result
 """"""
 This value indicates the result score of the game.
-It is defined as "<East score> <South score> <West score> <North score>".
+It is defined as ``"<East score> <South score> <West score> <North score>"``.
 For standard (not duplicate) MCR game, the sum of all must be 0.
 
 Penalty
 """""""
 This value indicates the penalty score of the game.
-It is defined as "<East score> <South score> <West score> <North score>".
+It is defined as ``"<East score> <South score> <West score> <North score>"``.
 
 Play
 """"
 This value indicates the played tiles.
-It is defined as "<play string>". A play string is defined as "<action><player><tile suit><tile num>".
+It is defined as ``"<play string>"``. A play string is defined as ``<action><player><tile suit><tile num>``.
 The following can be used as action:
-  T take
-  D discard
-  C chi(chow)
-  P peng(pung)
-  A angang(concealed kong)
-  B bugang(add a 4th tile to a melded pung to create a kong)
-  Z zhigang(open a concealed pung and add a 4th tile discarded by other player to create a kong)
-  R replace a flower
-  H hu(mahjong)
-The following can be used as action:
-  0 East
-  1 South
-  2 West
-  3 North
+  - T take
+  - D discard
+  - C chi(chow)
+  - P peng(pung)
+  - A angang(concealed kong)
+  - B bugang(add a 4th tile to a melded pung to create a kong)
+  - Z zhigang(open a concealed pung and add a 4th tile discarded by other player to create a kong)
+  - R replace a flower
+  - H hu(mahjong)
+  - N nogame
+The following can be used as player:
+  - 0 East
+  - 1 South
+  - 2 West
+  - 3 North
 The following can be used as tile suit:
-  c Character
-  d Dot
-  b Bamboo
-  w Wind
-  r dRagon
-  f Flower
+  - c Character
+  - d Dot
+  - b Bamboo
+  - w Wind
+  - r dRagon
+  - f Flower
 An integer can be used as tile num.
-If the suit is 'c', 'd' or 'b', then the num must be an integer between 1 and 9.
-If the suit is 'w', then the num must be an integer between 1 and 4.
-If the suit is 'r', then the num must be an integer between 1 and 3.
-If the suit is 'f', then the num must be an integer between 1 and 8.
+If the suit is ``c``, ``d`` or ``b``, then the num must be an integer between 1 and 9.
+If the suit is ``w``, then the num must be an integer between 1 and 4.
+If the suit is ``r``, then the num must be an integer between 1 and 3.
+If the suit is ``f``, then the num must be an integer between 1 and 8.
 
 Fan
 """
 This value indicates fans of the winning hand.
-It is defined as "<East fan> <South fan> <West fan> <North fan>".
-Each fan is defined as "<fan1 no.>/<fan1 num>.<fan2 no.>/<fan2 num>..." for winning players or "None" for not winning players.
+It is defined as ``"<East fan> <South fan> <West fan> <North fan>"``.
+Each fan is defined as ``<fan1 no.>/<fan1 score>/<fan1 num>.<fan2 no.>/<fan2 score>/<fan2 num>...`` for winning players or ``None`` for not winning players.
 Only one player can win in standard MCR rule.
-Fan no. is an integer between 1 and 81.
-Fan number indicates the number of windding fan and is an integer between 1 and 8.
+Fan no. indicates the no. of winning fan and is an integer between 1 and 81. Fan list can be found in the next section.
+Fan score indicates the value of winning fan and is an integer between 1 and 88.
+Fan number indicates the number of winning fan and is an integer between 1 and 8.
 
 Fan list
 ^^^^^^^^

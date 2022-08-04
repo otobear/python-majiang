@@ -235,12 +235,13 @@ class ResultDialog(QDialog):
             dialog_layout.addWidget(ptile_, layout_idx, 0, 1, 5, Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop)
             layout_idx += 1
             total_point = 0
-            for _, (fan_no, fan_num) in enumerate(fan):
-                point = FANZHONG_POINT[fan_no - 1] * fan_num
-                dialog_layout.addWidget(QLabel(FAN_NAME_ZH[fan_no - 1]), layout_idx, 1, Qt.AlignmentFlag.AlignLeft)
-                dialog_layout.addWidget(QLabel('{} * {} = {}'.format(FANZHONG_POINT[fan_no - 1], fan_num, point)), layout_idx, 3, Qt.AlignmentFlag.AlignRight)
+            for _, (fan_no, fan_score, fan_num) in enumerate(fan):
+                for _ in range(fan_num):
+                    dialog_layout.addWidget(QLabel(FAN_NAME_ZH[fan_no - 1]), layout_idx, 1, Qt.AlignmentFlag.AlignLeft)
+                    dialog_layout.addWidget(QLabel('{}'.format(fan_score)), layout_idx, 3, Qt.AlignmentFlag.AlignRight)
+                    layout_idx += 1
+                point = fan_score * fan_num
                 total_point += point
-                layout_idx += 1
             total_point_str_label = QLabel(STR_ZH['TOTAL_POINT'])
             total_point_str_label.setStyleSheet('font-weight: bold;')
             total_point_label = QLabel(str(total_point))
@@ -299,7 +300,6 @@ class GameWindow(QMainWindow):
         Down: to the last action
         Up: to the first action
         """
-        gw = self.board_widget
         if e.key() == Qt.Key.Key_Escape.value:
             self.close()
 

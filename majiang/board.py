@@ -182,10 +182,15 @@ class Board(object):
         """
 
         play_str = self.pmn_dict['Play']
-        s1, s2 = play_str.split('H', 1)
+        if 'H' in play_str:
+            s1, s2 = play_str.split('H', 1)
+            s2 = 'H' + s2
+        else:
+            s1 = play_str
+            s2 = 'N0'
         chunk_size = 4
         p1 = [s1[i : i + chunk_size] for i in range(0, len(s1), chunk_size)]
-        p2 = ['H' + s2]
+        p2 = [s2]
         self.play_log = p1 + p2
 
         return True
@@ -290,8 +295,8 @@ class Board(object):
             if fan != 'None':
                 fan_groups = fan.split('.')
                 for fg in fan_groups:
-                    fan_no, fan_num = [int(x) for x in fg.split('/')]
-                    result_.append((fan_no, fan_num))
+                    fan_no, fan_score, fan_num = [int(x) for x in fg.split('/')]
+                    result_.append((fan_no, fan_score, fan_num))
             result.append(result_)
 
         return result
