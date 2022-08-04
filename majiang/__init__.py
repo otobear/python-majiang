@@ -1,6 +1,6 @@
 __author__ = 'ZUO Yong'
 __email__ = 'spacedogsergei@gmail.com'
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 import majiang.tile as tile
 import majiang.tile_field as tile_field
