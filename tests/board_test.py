@@ -46,7 +46,14 @@ class BoardTestCase(unittest.TestCase):
         self.assertEqual(board.get_private_tile_list(NORTH), ['c4', 'c5', 'c6', 'd1', 'd2', 'b8', 'b8'])
         self.assertEqual(board.get_meld_tile_list(NORTH), [['b8', 'b7', 'b9'], ['d8', 'd7', 'd9']])
         self.assertEqual(board.get_discard_tile_list(SOUTH), ['r2', 'r1', 'r3', 'w1', 'w2', 'w1', 'd7', 'b5', 'w1', 'c6'])
-        self.assertEqual(board.get_fan(), [[], [(39, 1), (62, 1), (76, 1), (77, 1)], [], [(39, 1), (63, 1), (70, 1), (77, 1)]])
+        fans = [39, 62, 76, 77, 39, 63, 70, 77]
+        self.assertEqual(board.get_fan(), [[], [(fans[0], 8, 1), (fans[1], 2, 1), (fans[2], 1, 1), (fans[3], 1, 1)], [], [(fans[4], 8, 1), (fans[5], 2, 1), (fans[6], 1, 1), (fans[7], 1, 1)]])
+        self.assertEqual(board.get_fan_zh(), [
+            [],
+            [(FAN_NAME_ZH[fans[0] - 1], 8, 1), (FAN_NAME_ZH[fans[1] - 1], 2, 1), (FAN_NAME_ZH[fans[2] - 1], 1, 1), (FAN_NAME_ZH[fans[3] - 1], 1, 1)],
+            [],
+            [(FAN_NAME_ZH[fans[4] - 1], 8, 1), (FAN_NAME_ZH[fans[5] - 1], 2, 1), (FAN_NAME_ZH[fans[6] - 1], 1, 1), (FAN_NAME_ZH[fans[7] - 1], 1, 1)]
+        ])
         self.assertEqual(board.is_end(), True)
         self.assertEqual(board.get_starting(), [0, 0, 0, 0])
         self.assertEqual(board.get_result(), [-32, 36, -8, 36])

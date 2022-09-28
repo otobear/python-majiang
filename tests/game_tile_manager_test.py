@@ -1,9 +1,9 @@
-import majiang
-from majiang.Consts import *
-from majiang import Tile
 import unittest
 
-game_tile_manager = majiang.GameTileManager()
+from majiang.consts import *
+from majiang.game_tile_manager import *
+
+game_tile_manager = GameTileManager()
 
 class GameTileManagerTestCase(unittest.TestCase):
 
@@ -17,7 +17,8 @@ class GameTileManagerTestCase(unittest.TestCase):
     def step2_take(self):
         game_tile_manager.take(EAST, Tile('c1'))
         self.assertEqual(game_tile_manager.deck_tile.tile_num(), TOTAL_TILE_NUM - 1)
-        self.assertEqual(game_tile_manager.private_tile[EAST].tile_num(), 1)
+        self.assertEqual(str(game_tile_manager.private_tile[EAST].taken_tile), 'c1')
+        self.assertEqual(game_tile_manager.private_tile[EAST].tile_num(), 0)
 
     def step3_discard(self):
         game_tile_manager.take(EAST, Tile('c1'))
