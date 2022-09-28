@@ -315,9 +315,9 @@ class Board(object):
             if fan != 'None':
                 fan_groups = fan.split('.')
                 for fg in fan_groups:
-                    fan_no, fan_num = [int(x) for x in fg.split('/')]
+                    fan_no, fan_score, fan_num = [int(x) for x in fg.split('/')]
                     fan_name_zh = FAN_NAME_ZH[fan_no - 1]
-                    result_.append((fan_name_zh, fan_num))
+                    result_.append((fan_name_zh, fan_score, fan_num))
             result.append(result_)
 
         return result

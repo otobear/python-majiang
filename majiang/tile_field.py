@@ -243,6 +243,9 @@ class PrivateTileField(AbstractTileField):
         if self.tiles[tile.suit][tile.num - 1] == 4:
             raise ValueError('There are 4 {} in {} already'.format(tile, type(self)))
 
+        if self.taken_tile is not None:
+            self.tiles[self.taken_tile.suit][self.taken_tile.num - 1] += 1
+
         self.taken_tile = tile
 
     def discard_taken_tile(self):
